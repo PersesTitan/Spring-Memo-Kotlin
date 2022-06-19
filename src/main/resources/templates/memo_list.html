@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>메모 생성</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        td, th {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<p>
+    <form action="./memos" method="get">
+        <input type="text" name="search">
+        <input type="submit" value="검색">
+    </form>
+</p>
+
+<button onclick="location.href='new_memo.html'"
+        th:onclick="|location.href='memo'|"
+        type="button">생성</button>
+
+<h1>메모 리스트</h1>
+<label th:if="${searchParam}" th:text="|검색 결과: ${search}|"></label>
+<p>
+    자세히 보실려면 글짜를 클릭해주세요.
+</p>
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="memo:${memos}">
+            <td th:text="${memo.id}"
+                onclick="location.href='item/memo.html'"
+                th:onclick="|location.href='@{/memo/{id}(id=${memo.id})}'|"></td>
+            <td th:text="${memo.title}"
+                onclick="location.href='item/memo.html'"
+                th:onclick="|location.href='@{/memo/{id}(id=${memo.id})}'|"></td>
+            <td th:text="${#temporals.format(memo.createDate, 'yyyy-MM-dd HH:mm:ss')}"
+                onclick="location.href='item/memo.html'"
+                th:onclick="|location.href='@{/memo/{id}(id=${memo.id})}'|"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

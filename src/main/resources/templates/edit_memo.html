@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>편집</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>메모 편집</h1>
+    <form action="item/memo.html" th:action method="post">
+        <h3 for="title">제목</h3>
+        <input type="text" id="title" name="title" th:value="${memo.title}" placeholder="제목">
+        <br>
+
+        <h3 for="content">내용</h3>
+        <textarea name="content" id="content" cols="30" rows="10" th:text="${memo.content}" placeholder="내용"></textarea>
+        <br>
+        <button type="submit">완료</button>
+
+        <button onclick="location.href='memo_list.html'"
+                th:onclick="|location.href='@{/memos}'|"
+                type="button">목록으로</button>
+
+        <button onclick="location.href='item/memo.html'"
+                th:onclick="|location.href='@{/memo/{id}(id=${id})}'|"
+                type="button">취소</button>
+    </form>
+</body>
+</html>
