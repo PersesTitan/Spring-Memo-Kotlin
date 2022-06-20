@@ -3,26 +3,25 @@ package com.spring.MemoKotlin.domain
 import lombok.AccessLevel
 import lombok.Getter
 import lombok.NoArgsConstructor
+import lombok.Setter
 import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
-@Entity @Getter
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 class Memo(title: String, content: String) {
 
     @Id @GeneratedValue
     @Column(name = "memo_id", nullable = false)
-    private val id: Long? = null
+    val id: Long? = null
 
-    @Getter
-    private var title: String
-    @Getter
-    private var content: String
+    var title: String
+    var content: String
 
-    private val createDate: LocalDateTime
+    val createDate: LocalDateTime
 
     init {
         this.title = title
