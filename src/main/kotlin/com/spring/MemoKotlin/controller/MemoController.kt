@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 import javax.servlet.http.HttpServletRequest
 
 @Controller
-@RequiredArgsConstructor
 class MemoController {
 
     @Autowired
