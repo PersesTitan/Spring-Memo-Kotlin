@@ -28,8 +28,4 @@ class Memo(title: String, content: String) {
         this.content = content
         this.createDate = LocalDateTime.now()
     }
-
-    fun createMemo(title: String, content: String): Memo {
-        return Memo(title, content)
-    }
 }
